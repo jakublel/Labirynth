@@ -8,6 +8,41 @@ public class GameManager : MonoBehaviour
     //singleton
     public static GameManager Instance;
 
+    public void FreezeTime(int time)
+    {
+        CancelInvoke();
+        InvokeRepeating(nameof(Stopper), time, 1);
+    }
+
+    int redKeys;
+    int greenKeys;
+    int goldKeys;
+    internal void AddKey(Key.KeyType type)
+    {
+        switch (type)
+        {
+            case Key.KeyType.Red:
+                redKeys++;
+                break;
+            case Key.KeyType.Green:
+                greenKeys++;
+                break;
+            case Key.KeyType.Gold:
+                goldKeys++;
+                break;
+        }
+       
+    }
+
+    public void AddDiamond()
+    {
+        diamondsCount++;
+    }
+    public void AddTime(int time)
+    {
+        timer += time;
+    }
+
     private void Awake()
     {
         if (Instance != null)
@@ -19,6 +54,7 @@ public class GameManager : MonoBehaviour
 
     //game logic
     public int timer = 60;
+    int diamondsCount;
 
     private void Start()
     {
@@ -40,6 +76,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
 
     private void Pause()
     {

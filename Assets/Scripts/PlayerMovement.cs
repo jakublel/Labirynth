@@ -34,11 +34,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("PickUp"))
         {
-            Debug.Log("detected pickup");
+            //Debug.Log("detected pickup");
         }
         else
         {
-            Debug.Log("detected some trigger");
+            //Debug.Log("detected some trigger");
         }
     }
 
